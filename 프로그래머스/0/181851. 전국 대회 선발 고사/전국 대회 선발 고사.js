@@ -1,10 +1,6 @@
 function solution(rank, attendance) {
     const arr = rank
-        .filter((v, i) => {
-            if (attendance[i]) {
-                return v;
-            }
-        })
+        .filter((_, i) => attendance[i])
         .sort((a, b) => a - b)
         .slice(0, 3);
 
