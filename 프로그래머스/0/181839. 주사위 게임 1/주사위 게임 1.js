@@ -1,8 +1,8 @@
 function solution(a, b) {
-    const aRemain = a % 2;
-    const bRemain = b % 2;
+    const aIsOdd = !!(a % 2);
+    const bIsOdd = !!(b % 2);
 
-    if (aRemain === 1 && bRemain === 1) return a ** 2 + b ** 2;
-    if (aRemain === 0 && bRemain === 0) return Math.abs(a - b);
-    return 2 * (a + b);
+    if (aIsOdd && bIsOdd) return a ** 2 + b ** 2;
+    if (aIsOdd || bIsOdd) return 2 * (a + b);
+    return Math.abs(a - b);
 }
