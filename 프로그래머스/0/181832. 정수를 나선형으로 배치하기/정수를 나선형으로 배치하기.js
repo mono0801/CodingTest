@@ -1,51 +1,39 @@
-const op = {
-    right: ({ arr, i, j, num, mod, limit }) => {
-        if (arr[i][j + 1] === 0 && j + 1 < limit) {
-            arr[i][j + 1] = num;
-            return { arr, i, j: ++j, num: ++num, mod, limit };
-        }
-        return { arr, i, j, num, mod: "down", limit };
-    },
-    down: ({ arr, i, j, num, mod, limit }) => {
-        if (i + 1 >= limit) return { arr, i, j, num, mod: "left", limit };
-        if (arr[i + 1][j] === 0) {
-            arr[i + 1][j] = num;
-            return { arr, i: ++i, j, num: ++num, mod, limit };
-        }
-        return { arr, i, j, num, mod: "left", limit };
-    },
-    left: ({ arr, i, j, num, mod, limit }) => {
-        if (arr[i][j - 1] === 0 && j - 1 >= 0) {
-            arr[i][j - 1] = num;
-            return { arr, i, j: --j, num: ++num, mod, limit };
-        }
-        return { arr, i, j, num, mod: "up", limit };
-    },
-    up: ({ arr, i, j, num, mod, limit }) => {
-        if (arr[i - 1][j] === 0 && i - 1 >= 0) {
-            arr[i - 1][j] = num;
-            return { arr, i: --i, j, num: ++num, mod, limit };
-        }
-        return { arr, i, j, num, mod: "right", limit };
-    },
-};
-
 function solution(n) {
-    let answer = new Array(n).fill().map(() => new Array(n).fill(0));
-    let data = {
-        arr: answer,
-        i: 0,
-        j: 0,
-        num: 2,
-        mod: "right",
-        limit: n,
+    let arr = new Array(n).fill().map(() => new Array(n).fill(0));
+    let i = 0,
+        j = 0,
+        num = 1;
+    let mod = "right";
+
+    const directions = {
+        right: [0, 1, "down"],
+        down: [1, 0, "left"],
+        left: [0, -1, "up"],
+        up: [-1, 0, "right"],
     };
 
-    answer[0][0] = 1;
+    while (num <= n ** 2) {
+        arr[i][j] = num++;
+        let [dreaction_i, dreaction_j, nextMod] = directions[mod];
 
-    for (; data.num <= n ** 2; ) {
-        data = op[data.mod](data);
+        let next_i = i + dreaction_i,
+            next_j = j + dreaction_j;
+        if (
+            next_i >= n ||
+            next_j >= n ||
+            next_i < 0 ||
+            next_j < 0 ||
+            arr[next_i][next_j] !== 0
+        ) {
+            mod = nextMod;
+            [dreaction_i, dreaction_j] = directions[mod];
+            next_i = i + dreaction_i;
+            next_j = j + dreaction_j;
+        }
+
+        i = next_i;
+        j = next_j;
     }
 
-    return data.arr;
+    return arr;
 }
