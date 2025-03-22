@@ -64,10 +64,19 @@ class Trie {
     }
 }
 
+// Trie & Greedy 방식
 function solution(babbling) {
     const trie = new Trie();
     const allowedWords = ["aya", "ye", "woo", "ma"];
     allowedWords.forEach((word) => trie.insert(word));
 
     return babbling.reduce((acc, cur) => (trie.isValid(cur) ? ++acc : acc), 0);
+}
+
+// 정규 표현식
+function s(babbling) {
+    return babbling.reduce(
+        (acc, cur) => (cur.match(/^(aya|ye|woo|ma)+$/) ? ++acc : acc),
+        0
+    );
 }
