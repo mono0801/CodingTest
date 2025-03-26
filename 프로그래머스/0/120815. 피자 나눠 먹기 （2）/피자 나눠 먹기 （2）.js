@@ -1,7 +1,5 @@
 function solution(n) {
-    let i = 6;
-    for (; i <= 300; i += 6) {
-        if (!(i % n)) break;
+    for (let i = 6; i <= 300; i += 6) {
+        if (!(i % n)) return i / 6;
     }
-    return i / 6;
 }
