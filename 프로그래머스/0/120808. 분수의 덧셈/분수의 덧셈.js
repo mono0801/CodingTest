@@ -1,3 +1,4 @@
+// 유클리드 호제법 사용
 const gcd = (numer, denom) =>
     numer % denom ? gcd(denom, numer % denom) : denom;
 
