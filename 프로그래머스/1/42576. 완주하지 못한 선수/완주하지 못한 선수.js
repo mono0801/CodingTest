@@ -9,4 +9,12 @@ function solution(participant, completion) {
     });
 
     return [...countMap.keys()][0];
+    
+    // participant.map((v) => countMap.set(v, (countMap.get(v) || 0) + 1));
+
+    // completion.map((v) => {
+    //     countMap.get(v) > 1 ? countMap[v]-- : countMap.delete(v);
+    // });
+
+    // return [...countMap][0][0];
 }
