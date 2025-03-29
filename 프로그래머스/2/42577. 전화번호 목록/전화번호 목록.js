@@ -28,22 +28,17 @@ class Trie {
 
 function solution(phone_book) {
     // const set = new Set();
-    // phone_book.sort();
-    // let answer = true;
 
-    // phone_book.map((v) => {
-    //     for (let i = 1; i < v.length; i++) {
-    //         let prefix = v.slice(0, i);
+    // for (const phone of phone_book.sort()) {
+    //     for (let i = 1; i < phone.length; i++) {
+    //         let prefix = phone.slice(0, i);
     //         if (set.has(prefix)) {
-    //             answer = false;
-    //             break;
-    //         } else {
-    //             set.add(prefix);
+    //             return false;
     //         }
+    //         set.add(phone);
     //     }
-    // });
-
-    // return answer;
+    // }
+    // return true;
 
     const data = {
         answer: true,
