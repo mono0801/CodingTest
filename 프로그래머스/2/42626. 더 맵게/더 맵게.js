@@ -58,7 +58,7 @@ class Heap {
 
 function solution(scoville, K) {
     const heap = new Heap(scoville);
-    let ln = scoville.length;
+    let ln = heap.heapq.length;
     let cnt = 0;
 
     while (true) {
