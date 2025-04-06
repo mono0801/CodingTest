@@ -5,8 +5,6 @@ function solution(jobs) {
     const answer = [];
     let time = 0;
 
-    console.log(jobs);
-
     while (true) {
         let last;
         if (jobs.length) {
