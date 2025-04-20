@@ -10,7 +10,5 @@ function solution(number, k) {
         answer.push(num);
     }
 
-    answer.splice(answer.length - k, k);
-
-    return answer.join("") + "";
+    return answer.slice(0, answer.length - k).join("");
 }
